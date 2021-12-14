@@ -3,10 +3,13 @@ import React, { useState} from "react"
 export const CartContext = React.createContext();
 
 export const CartProvider = ({ children}) => {
+
         const [cart, setCart] = useState([]) 
-        console.log(cart )
+        console.log("CART", cart )
 
         const addTocart = (item,cantidad)=> {
+            console.log("CANTIDAD", cantidad)
+
             const myItem = cart.find (i=> i.item.id === item.id)
             if (myItem) {
                 myItem.cantidad = myItem.cantidad + cantidad 
@@ -17,7 +20,22 @@ export const CartProvider = ({ children}) => {
             }
         }
 
-return <CartContext.Provider value = {{ cart , addTocart }} >
+        /* AGREGAMOS FUNCIONES getTotalQuantity, getPriceTotal, removeItem para manejar el cartview */
+        const getTotalQuantity = () => {
+            return cart.reduce((acumulador, item) => item.cantidad + acumulador, 0)
+        }
+
+        const getPriceTotal = () => {
+            return cart.reduce((acumulador, item) => item.cantidad * item.item.precio + acumulador, 0)
+        }
+
+        const removeItem = (id) => {
+            const cartAux = cart.filter( i => i.item.id !== id )
+
+            setCart( [...cartAux] )
+        }
+
+return <CartContext.Provider value = {{ cart , addTocart, getTotalQuantity, getPriceTotal, removeItem }} >
     {children}
 </CartContext.Provider>
 }
