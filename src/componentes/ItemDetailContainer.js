@@ -1,32 +1,29 @@
 import { useEffect, useState } from "react"
-import { somethingWillhappen } from "./promises";
-import { ItemDetail} from "./ItemDetail";
-import{useParams} from "react-router-dom";
+import { ItemDetail } from "./ItemDetail";
+import { useParams } from "react-router-dom";
 
-import db from ".../firebase/firebase";
+import db from "../firebase/firebase"; 
 import{ doc, getDoc } from "firebase/firestore";
 
-
 export const ItemDetailContainer = () => {
-    const [item, setItem] = useState ({})
-    const [loading,setLoading] =useState(true)
-    const {itemId} = useParams ();
+    const [item, setItem] = useState({})
+    const [loading, setLoading] = useState(true)
+    const { itemId } = useParams();
 
-useEffect(() => {
-    setLoading(true)
+    useEffect(() => {
+        setLoading(true)
 
-    const ref =doc(db,"productos ", itemId)
+        const ref = doc(db, "productos ", itemId)
 
+        getDoc(ref).then(resultado =>
+            setItem({ id: resultado.id, ...resultado.data() })
+            
+        ).finally(() => setLoading(false))
 
-getDoc(ref).then(resultado =>
-    setItem({ id: resultado.id,...resultado.data() } )
-
-    ).finally(()=> setLoading(false))
-
-},  [itemId])
-
+    }, [itemId])
 
 
-    return  loading ? <h1>CARGANDO..</h1> :<ItemDetail item ={item} />
+
+    return loading ? <h1>CARGANDO..</h1> : <ItemDetail item={item} />
 
 };
