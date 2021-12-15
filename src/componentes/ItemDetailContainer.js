@@ -3,6 +3,10 @@ import { somethingWillhappen } from "./promises";
 import { ItemDetail} from "./ItemDetail";
 import{useParams} from "react-router-dom";
 
+import db from ".../firebase/firebase";
+import{ doc, getDoc } from "firebase/firestore";
+
+
 export const ItemDetailContainer = () => {
     const [item, setItem] = useState ({})
     const [loading,setLoading] =useState(true)
@@ -11,8 +15,12 @@ export const ItemDetailContainer = () => {
 useEffect(() => {
     setLoading(true)
 
-somethingWillhappen().then(resultado =>
-    itemId && setItem(resultado.find(item => item.id === itemId))
+    const ref =doc(db,"productos ", itemId)
+
+
+getDoc(ref).then(resultado =>
+    setItem({ id: resultado.id,...resultado.data() } )
+
     ).finally(()=> setLoading(false))
 
 },  [itemId])
