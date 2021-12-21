@@ -1,13 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@200&family=Roboto&family=Rubik&display=swap');
 body {
   margin: 0;
   box-sizing: border-box;
-  font-family: Optima, sans-serif;
-  --border: 1px solid #cbb4da;
-  --border-table: 1px solid rgb(202, 138, 211);
+  font-family:   'Roboto', sans-serif;
+  font-family: 'Overpass', sans-serif;
+  --border: 2px solid #cbb4da;
+  --border-table: 2px solid rgb(202, 138, 211);
   background: #e3c2f7;
+
   
 }
+
+.navbar1{
+  background-color: violet;
+  font-family:'Overpass', sans-serif;
+  display: flex;
+  flex-direction: row;
+  padding: 15px;
+  list-style: none;
+  
+  
+
+}
+.linknavbar {
+  text-decoration: none;
+  font-size: 20px;
+  display:flex ;
+  padding: 20px;
+  font-family:  'Overpass', sans-serif; 
+  
+}
+
+.nina1 {
+  text-decoration: none;
+  text-align: start;
+  font-size: 20px;
+  
+}
+.nina2{
+  
+
+
+}
+a{
+  text-decoration: none;
+}
+.Link {
+  text-decoration: none;
+}
+
+header{
+  background-color: #e3c2f7;
+  height: 100px;
+  text-align: center;
+  text-decoration: none;
+  
+}
+.navbar{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 30px;
+  border-bottom: 2px rgb(211, 122, 199) solid;
+  margin-bottom: 3rem;
+}
+.navbar li{
+  padding: 10px;
+  list-style: none;    
+}
+.navbar li a{
+  text-decoration: none;
+  color:black;
+}
+.navbar li a:hover{
+  color: rgb(216, 144, 235);
+  transition: 2.0s;
+}
+
 h1 {
+  margin-top: 3rem;
   text-align: center;
   color: rgb(75, 72, 77);
 }
@@ -76,9 +148,13 @@ td {
 
 
 /* DESDE AQUI EMPIEZA LA SECCIÓN DE LOS PRODUCTOS */
+
+.contenedor-productos{
+  margin-top: 5rem;
+}
 .cartola {
-  height: 400px;
-  width: 230px;
+  height: 450px;
+  width: 250px;
   border-radius: 0.35rem;
   background: #c0a0be;
   display: flex;
@@ -178,17 +254,10 @@ img {
 .carrito {
   width: 18px;
 }
-/* Contenedor de todos los productos */
-.contenedor-productos {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
+
+
 
 .background-dark{
   background-color: rgb(240, 138, 209);
 }
-
-
-
 

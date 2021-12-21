@@ -8,7 +8,7 @@ const products =[
         precio: 500
     },
     { 
-        product1:`Abrigos`,
+        product1 :`Abrigos`,
         color: `blue`,
         id:"2",
         imagen:`/imagenes/buzitogato.jpg`,
